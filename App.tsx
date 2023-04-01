@@ -1,20 +1,29 @@
+import { ThemeProvider } from '@rneui/themed';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import BackgroundGradient from './src/UI/BackgroundGradient';
+import Balance from './src/components/Balance/Balance';
+import Tabs from './src/components/Tabs/Tabs';
+import theme from './src/UI/theme';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <ScrollView style={styles.container}>
+        <ThemeProvider theme={theme}>
+          <BackgroundGradient colors={['#425caf', '#244a8f', '#345288', '#392ca8']} angle={150} />
+          <Balance />
+          <Tabs />
+        </ThemeProvider>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    backgroundColor: '#0b0e11',
   },
 });
